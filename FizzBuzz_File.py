@@ -1,14 +1,15 @@
 import numpy as np
 
+
 def FizzBuzz(start, finish):
-    numvec=np.arrange(start,finish+1)
-    objvec=np.array(numvec,dtype=object)
-    mask3=numvec%3==0
-    mask5=numvec%5==0
+    numvec = np.arange(start, finish+1)
+    objvec = np.array(numvec, dtype=object)
 
-    objvec[mask3&mask5]="fizzbuzz"
-    objvec[mask3&~mask5]="fizz" 
-    objvec[mask5&~mask3]="buzz"
+    mask3 = numvec % 3 == 0
+    mask5 = numvec % 5 == 0
 
+    objvec[mask3 & mask5] = "fizzbuzz"
+    objvec[mask3 & ~mask5] = "fizz"
+    objvec[mask5 & ~mask3] = "buzz"
 
-    return(objvec)
+    return objvec.tolist()

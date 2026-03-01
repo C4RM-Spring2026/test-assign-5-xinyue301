@@ -14,4 +14,4 @@ def getBondPrice(y, face, couponRate, m, ppy=1):
     df=(1+rate)**(-t)
 
     price=np.sum(c*df)+face*df[-1]
-    return(price)
+    return float(price)
