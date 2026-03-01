@@ -1,18 +1,20 @@
 import numpy as np
 
-def getBondDuration(y, face, couponRate, m, ppy = 1):
-    n=m*ppy
-    rate=y/ppy
-    c=couponRate*face/ppy
+def getBondDuration(y, face, couponRate, m, ppy=1):
 
-    t=np.arrange(1,n+1)
-    df=(1+rate)**(-t)
-    cf=np.full(n,c)
-    cf[-1]=c+face
+    n = int(m * ppy)
+    rate = y / ppy
+    c = couponRate * face / ppy
 
-    pvcf=cf*df
+    t = np.arange(1, n+1)
+    df = (1+rate)**(-t)
 
-    price=np.sum(pvcf)
+    cf = np.full(n, c)
+    cf[-1] = c + face
 
-    duration=np.sum((t/ppy)*pvcf/price)
+    pvcf = cf * df
+    price = np.sum(pvcf)
+
+    duration = np.sum((t/ppy) * pvcf) / price
+
     return float(duration)
